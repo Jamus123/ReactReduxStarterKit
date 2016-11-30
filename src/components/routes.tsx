@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
 import Main from './main';
 

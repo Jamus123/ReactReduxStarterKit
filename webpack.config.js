@@ -5,23 +5,24 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
-    './src/components/app.jsx'
+    './src/components/app.tsx'
   ],
   output: {
-    path: path.resolve(__dirname, 'public'),
-    publicPath: '/public',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist',
     filename: 'bundle.js'
   },
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.tsx?$/,
         loaders: ['react-hot'],
         include: path.join(__dirname, 'src')
       },
       {
-      exclude: /node_modules/,
-      loader: 'babel'
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.scss$/,
@@ -38,7 +39,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.ts', '.tsx', '.js']
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
