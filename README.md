@@ -2,13 +2,13 @@
 A React Starter Kit Scaffold that uses webpack configurations without gulp
 
 
-##### Instructions
+### Instructions
 
-### Development
+##### Development
 1. Run `npm install` to install required node modules
 2. Run `npm start` to run application on localhost:8080
 
-### Production
+##### Production
 1. Comment out the `webpack-hot-middleware/client` line from the webpack.config.
 2. Run `npm run build` to build the bundle.js file which is placed in the `dist` folder.
 3. Run `npm run deploy` to run the application forever in a production environment.
@@ -17,7 +17,7 @@ A React Starter Kit Scaffold that uses webpack configurations without gulp
 
 [1]: https://github.com/Unitech/pm2
 
-### Style Loaders
+##### Style Loaders
 
 - This project is using the loaders (sass, css, and style loaders) to control style.
 In order to style pages you can require a sass file in the component and it will
@@ -25,7 +25,7 @@ receive the styling of that particular sass file. An example of this can be seen
 react component.
 
 
-### Type Definitions
+##### Type Definitions
 
 - After installing a package, remember to also install the types definition file for that node package.
 e.g.
