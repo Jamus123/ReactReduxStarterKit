@@ -3,8 +3,8 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client',
     './src/components/app.tsx'
   ],
   output: {
@@ -16,12 +16,12 @@ module.exports = {
     loaders: [
       {
         test: /\.tsx?$/,
-        loaders: ['react-hot'],
+        loaders: ['react-hot-loader/webpack'],
         include: path.join(__dirname, 'src')
       },
       {
         test: /\.tsx?$/,
-        loader: 'ts-loader',
+        loader: 'awesome-typescript-loader',
         exclude: /node_modules/
       },
       {
@@ -42,7 +42,9 @@ module.exports = {
     extensions: ['', '.ts', '.tsx', '.js']
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
     // new webpack.optimize.UglifyJsPlugin({
     //   compress: {
     //     warnings: false
