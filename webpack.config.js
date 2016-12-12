@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
   entry: [
@@ -45,6 +46,7 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
+    new CheckerPlugin(),
     // new webpack.optimize.UglifyJsPlugin({
     //   compress: {
     //     warnings: false
