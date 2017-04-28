@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { increment } from '../actions';
 
 // Styles
 import '../../public/styles/index.scss';
@@ -7,10 +9,6 @@ import '../../public/styles/index.scss';
 class Main extends Component {
 	constructor(props) {
 		super(props);
-
-		this.state = {
-			count: 0
-		};
 	}
 
 	render() {
@@ -25,12 +23,12 @@ class Main extends Component {
 			<div className="app-container">
 				<h1 className="app-container-title">REACT STARTER KIT!</h1>
 				<img className="app-container-image" src="/public/images/minime.png" alt="minime" />
-				<div style={style}>{ this.state.count }</div>
+				<div style={style}>{ this.props.counter.count }</div>
 				{ this.props.children }
 				<button
 					className="btn btn-default"
 					style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }}
-					onClick={() => { this.setState({ count: this.state.count + 1 }); }}
+					onClick={this.props.increment}
 				>
 					Increment Me!
 				</button>
@@ -40,4 +38,10 @@ class Main extends Component {
 
 }
 
-export default Main;
+const mapStateToProps = (state) => {
+	return {
+		counter: state.counter
+	};
+}
+
+export default connect(mapStateToProps, { increment })(Main);
