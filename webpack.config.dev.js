@@ -9,6 +9,9 @@ const VENDOR_LIBS = [
   ];
 
 const BUNDLE = [
+  'babel-polyfill',
+  'react-hot-loader/patch',
+  'webpack-hot-middleware/client',
   './src/components/app.jsx'
 ];
 
@@ -19,10 +22,15 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[hash].js'
   },
   module: {
     rules: [
+      {
+        test: /\.jsx$/,
+        use: ['react-hot-loader/webpack'],
+        include: path.join(__dirname, 'src')
+      },
       {
         use: 'babel-loader',
         test: /\.jsx?$/,
@@ -51,6 +59,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: 'src/index.html'
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ]
 };
