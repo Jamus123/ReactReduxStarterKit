@@ -8,22 +8,24 @@ var config = require('./webpack.config.dev');
 var app = express();
 var compiler = webpack(config);
 
-app.use(devMiddleware(compiler, {
-  historyApiFallback: true,
-  stats: { colors: true },
-  hot: true,
-  inline: true,
-  contentBase: './dist'
-}));
+app.use(devMiddleware(compiler, config.devServer));
 
 app.use(hotMiddleware(compiler));
 
 // server static assets normally
-app.use('/public', express.static(__dirname + '/public'));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+  var filename = path.join(compiler.outputPath,'index.html');
+    compiler.outputFileSystem.readFile(filename, function(err, result){
+      if (err) {
+        return next(err);
+      }
+      res.set('content-type','text/html');
+      res.send(result);
+      res.end();
+    });
 });
 
 app.listen(8080, function (err) {

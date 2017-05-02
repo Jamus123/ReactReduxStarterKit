@@ -20,10 +20,22 @@ module.exports = {
     bundle: BUNDLE,
     vendor: VENDOR_LIBS
   },
-  output: {
+   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].[hash].js',
-    publicPath: '/'
+    publicPath: '/dist/'
+  },
+  devServer: {
+    hot: true,
+    inline: true,
+    contentBase: path.join(__dirname, 'dist'),
+    publicPath: '/dist/',
+    historyApiFallback: true,
+    stats: {
+      colors: true,
+      chunks: false,
+      'errors-only': true
+    }
   },
   module: {
     rules: [
