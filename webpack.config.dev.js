@@ -58,7 +58,7 @@ module.exports = {
         test: /\.jpg$|\.gif$|.png$/i
       },
       {
-        use: "file-loader?name=./fonts/[name].[ext]",
+        use: "url-loader?name=./fonts/[name].[ext]",
         test: /\.otf$|\.ttf$/i
       }
     ]
