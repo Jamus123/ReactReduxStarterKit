@@ -16,7 +16,7 @@ app.use(hotMiddleware(compiler));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 
-app.get('*', function (req, res) {
+app.get('*', function (req, res, next) {
   var filename = path.join(compiler.outputPath,'index.html');
     compiler.outputFileSystem.readFile(filename, function(err, result){
       if (err) {

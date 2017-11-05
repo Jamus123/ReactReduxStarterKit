@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import DevTools from '../containers/dev-tools';
+import DevTools from '../containers/DevTools';
 
 /**
  * This variable is "true" if the application

@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
 // import dev tools
-import DevTools from '../containers/dev-tools';
+import DevTools from '../containers/DevTools';
 
 //import routes and reducers
 import rootReducer from '../reducers';
