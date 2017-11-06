@@ -6,7 +6,7 @@ module.exports = {
   entry: [
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
-    './src/components/app.tsx'
+    './src/components/App.tsx'
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
