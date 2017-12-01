@@ -16,22 +16,22 @@ const theme = createMuiTheme();
 import Main from './main';
 
 const Root = (props) => {
-	return (
-		<Provider store={ props.store }>
-			<MuiThemeProvider theme={theme}>
-				<div>
-					<Router>
-						<Route path="/" component={Main} />
-					</Router>
-				{/**
-				* Embed the DevTools component only
-				* when in development.
-				*/}
-				{!isProduction && <DevTools />}
-				</div>
-			</MuiThemeProvider>
-		</Provider>
-	);
+  return (
+    <Provider store={ props.store }>
+      <MuiThemeProvider theme={theme}>
+        <div>
+          <Router>
+            <Route path="/" component={Main} />
+          </Router>
+        {/**
+        * Embed the DevTools component only
+        * when in development.
+        */}
+        {!isProduction && <DevTools />}
+        </div>
+      </MuiThemeProvider>
+    </Provider>
+  );
 }
 
 export default Root;
